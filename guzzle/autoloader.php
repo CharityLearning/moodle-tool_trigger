@@ -85,7 +85,7 @@ $mapping = array(
 );
 
 spl_autoload_register(function ($class) use ($mapping) {
-    if (isset($mapping[$class])) {
+    if (isset($mapping[$class]) && !class_exists($class, false) ) {
         require_once $mapping[$class];
     }
 }, true);
